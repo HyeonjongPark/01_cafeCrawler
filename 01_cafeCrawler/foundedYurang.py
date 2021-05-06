@@ -23,9 +23,9 @@ def post_message(token, channel, text):
 myToken = open("./slack_token.txt", "r").readline()
 
 
-page_range = 6
+page_range = 11
 
-post_message(myToken,"#unchecked", "안녕하세요 주인님. 답변되지 않은 url 찾는 일 시작합니다. 약 "+str((page_range-1)*4) +"분 정도 소요될 예정입니다.")
+post_message(myToken,"#unchecked", "안녕하세요 주인님. 답변되지 않은 url 찾는 일 시작합니다. 약 "+str((page_range-1)*3) +"분 정도 소요될 예정입니다.")
 
 
 
@@ -124,16 +124,16 @@ full_urls3 = []
 for urls2 in full_urls2:
     driver.get(urls2)
     
-    driver.implicitly_wait(3)
+    driver.implicitly_wait(1.5)
     try :
         driver.switch_to_frame("cafe_main")
 
-        driver.implicitly_wait(3)
+        driver.implicitly_wait(1.5)
     
         nicknames = []
         
         for i in range(0,50):
-            driver.implicitly_wait(3)
+            driver.implicitly_wait(1.5)
             try :           
                 nicknames.append(driver.find_element_by_xpath("/html/body/div/div/div/div[2]/div[2]/div[5]/ul/li["+str(i+1)+"]/div/div/div[1]/div/a").text)
             except :
@@ -142,7 +142,7 @@ for urls2 in full_urls2:
                 
         if len(nicknames) == 0:
                 for i in range(0,50):
-                    driver.implicitly_wait(3)
+                    driver.implicitly_wait(1.5)
                     try :           
                         nicknames.append(driver.find_element_by_xpath("/html/body/div/div/div/div[2]/div[2]/div[6]/ul/li["+str(i+1)+"]/div/div/div[1]/div/a").text)
                     except :
@@ -193,4 +193,7 @@ if len(strings) == 1 :
 else :
     for i in range(1,(len(strings))) :
         post_message(myToken,"#unchecked",strings[i])
+
+        if i == (len(strings)-1) :
+            break
 
