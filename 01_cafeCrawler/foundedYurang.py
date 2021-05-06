@@ -23,9 +23,9 @@ def post_message(token, channel, text):
 myToken = open("./slack_token.txt", "r").readline()
 
 
-page_range = 11
+page_range = 6
 
-post_message(myToken,"#unchecked", "해햄햇님 안녕하세요. 동댕봇 일 시작합니다. 약 "+(page_range-1)*4 +"분 정도 소요될 예정입니다.")
+post_message(myToken,"#unchecked", "안녕하세요 주인님. 답변되지 않은 url 찾는 일 시작합니다. 약 "+str((page_range-1)*4) +"분 정도 소요될 예정입니다.")
 
 
 
@@ -179,7 +179,7 @@ out_df.to_csv("./uncheckedUrl/"+yesterday_str+"uncheck.txt", index = False)
 # post_message(myToken,"#unchecked","Hi, I am Dongdang Bot "+yesterday_str)
 
 # 최근 page_range개 기준
-post_message(myToken,"#unchecked","Hi, I am Dongdaeng Bot"+ (page_range-1)*50 +"most recent - unchecked_list - "+date.today().strftime('%Y.%m.%d.'))
+post_message(myToken,"#unchecked","약 "+ str((page_range-1)*50) +"개의 게시물을 확인한 결과 "+date.today().strftime('%Y.%m.%d.')+"기준으로 아래의 미답변 url을 찾아냈습니다.")
 
 file = open("./uncheckedUrl/"+yesterday_str+"uncheck.txt", "r")
 strings = file.readlines()
