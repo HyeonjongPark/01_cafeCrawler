@@ -23,7 +23,7 @@ def post_message(token, channel, text):
 myToken = open("./slack_token.txt", "r").readline()
 
 
-page_range = 11
+page_range = 6
 
 post_message(myToken,"#unchecked", "안녕하세요 주인님. 답변되지 않은 url 찾는 일 시작합니다. 약 "+str((page_range-1)*3) +"분 정도 소요될 예정입니다.")
 
